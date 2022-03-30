@@ -58,10 +58,10 @@ class GUI:
                 path_a_star = self._controller.searchAStar(self._initialX, self._initialY, self._finalX, self._finalY)
                 end_a_star = time.time()
 
-            if not printed_a_star:
-                print("A* path: ")
-                print(path_a_star)
-                printed_a_star = True
+            # if not printed_a_star:
+            #     print("A* path: ")
+            #     print(path_a_star)
+            #     printed_a_star = True
 
             screen.blit(self._controller.displayWithPath(self._controller.get_map().image(), path_a_star), (0, 0))
 
@@ -70,10 +70,10 @@ class GUI:
                 path_greedy = self._controller.searchGreedy(self._initialX, self._initialY, self._finalX, self._finalY)
                 end_greedy = time.time()
 
-            if not printed_greedy:
-                print("Greedy path: ")
-                print(path_greedy)
-                printed_greedy = True
+            # if not printed_greedy:
+            #     print("Greedy path: ")
+            #     print(path_greedy)
+            #     printed_greedy = True
 
             screen.blit(self._controller.displayWithPath(self._controller.get_map().image(), path_greedy), (400, 0))
 

@@ -36,9 +36,6 @@ class Controller:
     def ManhattanDistanceHeuristic(self, x1, x2, y1, y2):
         return abs(x1 - x2) + abs(y1 - y2)
 
-    def isNodeValid(self, x, y):
-        return -1 < x < 20 and -1 < y < 20 and self._map.surface[x][y] == 0
-
     def buildPath(self, prev, finalX, finalY):
         path = [(finalX, finalY)]
         coord = prev[(finalX, finalY)]
@@ -72,7 +69,7 @@ class Controller:
                     newX = node[0] + d[0]
                     newY = node[1] + d[1]
 
-                    if self.isNodeValid(newX, newY) and (newX, newY) not in visited:
+                    if -1 < newX < 20 and -1 < newY < 20 and self._map.surface[newX][newY] == 0 and (newX, newY) not in visited:
                         if (newX, newY) not in visitQueue:
                             aux.append((newX, newY))
                             prev[(newX, newY)] = node
@@ -113,7 +110,7 @@ class Controller:
                     newX = node[0] + d[0]
                     newY = node[1] + d[1]
 
-                    if self.isNodeValid(newX, newY) and (newX, newY) not in visited:
+                    if -1 < newX < 20 and -1 < newY < 20 and self._map.surface[newX][newY] == 0 and (newX, newY) not in visited:
                         aux.append((newX, newY))
                         prev[(newX, newY)] = node
 
@@ -130,10 +127,6 @@ class Controller:
         mapImage.blit(drona, (self._drone.get_y() * 20, self._drone.get_x() * 20))
 
         return mapImage
-
-    def dummysearch(self):
-        # example of some path in test1.map from [5,7] to [7,11]
-        return [[5, 7], [5, 8], [5, 9], [5, 10], [5, 11], [6, 11], [7, 11]]
 
     def displayWithPath(self, image, path):
         mark = pygame.Surface((20, 20))
