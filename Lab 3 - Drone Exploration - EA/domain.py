@@ -109,7 +109,7 @@ class Individual:                       # a member of the population (a possible
 
         # RIGHT
         yf = y - 1
-        while ((yf >= 0 and x < mapLength - 1 and x >= 0) and (surface[x][yf] != 0)):
+        while ((yf >= 0 and x < mapLength - 1 and x >= 0) and (surface[x][yf] != 1)):
             if (surface[x][yf] == 0):
                 # print("pass right")
                 seenArea += 1
